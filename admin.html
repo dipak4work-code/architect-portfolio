@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Architect Website</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Back to Site</a>
+      <a class="btn primary" href="index.html">Preview</a>
+    </div>
+  </header>
+
+  <main class="section admin-section">
+    <div class="container">
+      <h1>Admin Dashboard</h1>
+      <p>Manage about text, services highlights, and project entries with images.</p>
+
+      <section class="admin-card">
+        <h2>About Content</h2>
+        <textarea id="adminAbout" rows="4"></textarea>
+        <button id="saveAbout" class="btn primary">Save About</button>
+        <p id="aboutStatus" class="feedback"></p>
+      </section>
+
+      <section class="admin-card">
+        <h2>Services Text</h2>
+        <textarea id="adminServices" rows="4" placeholder="One line per service"></textarea>
+        <button id="saveServices" class="btn primary">Save Services</button>
+        <p id="servicesStatus" class="feedback"></p>
+      </section>
+
+      <section class="admin-card">
+        <h2>Add Project</h2>
+        <form id="projectForm" class="admin-form">
+          <input type="text" id="projectTitle" placeholder="Project Title" required>
+          <input type="text" id="projectCategory" placeholder="Category (Residential/Commercial/Interior)" required>
+          <textarea id="projectDescription" rows="3" placeholder="Short description" required></textarea>
+          <input type="file" id="projectImage" accept="image/*" required>
+          <button type="submit" class="btn primary">Add Project</button>
+        </form>
+        <p id="projectStatus" class="feedback"></p>
+      </section>
+
+      <section class="admin-card">
+        <h2>Existing Projects</h2>
+        <div id="projectList" class="admin-list"></div>
+      </section>
+
+      <section class="admin-card">
+        <h2>Admin JSON Preview</h2>
+        <pre id="jsonPreview" style="white-space: pre-wrap; word-break: break-word; background: #f7f7f7; padding: 1rem; border-radius: 8px; border: 1px solid #eee;"></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Admin panel saves data locally in browser storage.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

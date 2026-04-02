@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architect Studio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#">Aarav Architect</a>
+      <nav>
+        <ul class="menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="btn admin-btn" href="admin.html">Admin</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Toggle menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <p class="eyebrow">Indian Architectural Design Studio</p>
+        <h1>Modern aesthetics. Sustainable spaces. Enduring value.</h1>
+        <p>We craft residential and commercial spaces that embody culture, context and comfort.</p>
+        <a href="#contact" class="btn primary">Book a consultation</a>
+      </div>
+    </section>
+
+    <div id="lightbox" class="lightbox">
+      <button class="lightbox-close" aria-label="Close lightbox">✕</button>
+      <img id="lightboxImage" src="" alt="Project image" />
+    </div>
+
+    <section id="about" class="section about">
+      <div class="container">
+        <h2>About</h2>
+        <p id="aboutText">Experienced architect with 15+ years designing luxury homes, boutique hotels, and urban offices. Our practice is rooted in Indian traditions, contemporary sustainability, and human-centered craft.</p>
+      </div>
+    </section>
+
+    <section id="services" class="section services">
+      <div class="container">
+        <h2>Services</h2>
+        <div class="grid service-grid" id="servicesList">
+          <article class="card">
+            <h3>Architecture Design</h3>
+            <p>End-to-end residential and commercial architecture with context-aware planning.</p>
+          </article>
+          <article class="card">
+            <h3>Interior Design</h3>
+            <p>Elegant interiors crafted for local climate, materiality, and lifestyle.</p>
+          </article>
+          <article class="card">
+            <h3>Project Consultation</h3>
+            <p>Feasibility studies, BUA estimation, cost planning and vendor coordination.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Selected Projects</h2>
+          <div class="project-filter" role="group" aria-label="project filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Office">Office</button>
+            <button class="filter-btn" data-filter="House">House</button>
+            <button class="filter-btn" data-filter="Residential">Residential</button>
+            <button class="filter-btn" data-filter="Commercial">Commercial</button>
+            <button class="filter-btn" data-filter="Interior">Interior</button>
+          </div>
+        </div>
+
+        <div id="projectsGrid" class="grid projects-grid"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Start a project with us. We respond within 24 hours.</p>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p><strong>Email:</strong> hello@aaravarchitect.com</p>
+            <p><strong>Phone:</strong> +91 98765 43210</p>
+            <p><strong>Location:</strong> Mumbai, India</p>
+          </div>
+          <form id="contactForm" class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn primary">Send Message</button>
+            <p id="contactFeedback" class="feedback"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Aarav Architect Studio. Designed with care in India.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
