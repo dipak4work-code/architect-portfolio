@@ -291,29 +291,49 @@ function ProjectEditor({ projects, onSave }) {
     setEditIndex(-1);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (!title || !category || !description || (editIndex === -1 && !image)) return;
+    if (!title || !category || !description || (editIndex === -1 && !image)) {
+      alert('Fill all mandatory fields.');
+      return;
+    }
 
-    const saveProject = (imgSrc) => {
-      const updated = [...projects];
-      const project = { title, category, description, image: imgSrc || (editIndex >= 0 ? projects[editIndex].image : '') };
-      if (editIndex >= 0) {
-        updated[editIndex] = project;
-      } else {
-        updated.unshift(project);
-      }
-      onSave(updated);
-      clearForm();
-    };
+    let imageUrl = image;
 
     if (image instanceof File) {
-      const reader = new FileReader();
-      reader.onload = (ev) => saveProject(ev.target.result);
-      reader.readAsDataURL(image);
-    } else {
-      saveProject(image);
+      const fd = new FormData();
+      fd.append('image', image);
+      try {
+        const res = await fetch('http://localhost:5000/api/upload', {
+          method: 'POST',
+          body: fd
+        });
+        const body = await res.json();
+        if (!res.ok) throw new Error(body.message || 'Upload failed');
+        imageUrl = body.url;
+      } catch (err) {
+        console.error(err);
+        alert('Upload failed. Make sure the backend server is running.');
+        return;
+      }
     }
+
+    const updated = [...projects];
+    const project = {
+      title,
+      category,
+      description,
+      image: imageUrl || (editIndex >= 0 ? projects[editIndex].image : '')
+    };
+
+    if (editIndex >= 0) {
+      updated[editIndex] = project;
+    } else {
+      updated.unshift(project);
+    }
+
+    onSave(updated);
+    clearForm();
   };
 
   return (
